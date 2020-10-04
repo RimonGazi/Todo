@@ -1,16 +1,184 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    ext.kotlin_version = "1.4.10"
+    ext {
+        androidGradlePluginVersion = '4.0.1'
+        kotlinVersion = '1.3.72'
+        minSdk = 21
+        compileSdk = 30
+
+        //Ui
+        appcompatVersion = '1.1.0'
+        APPCOMPAT = "androidx.appcompat:appcompat:$appcompatVersion"
+        materialVersion = '1.2.0-alpha04'
+        MATERIAL = "com.google.android.material:material:$materialVersion"
+        SWIPE_REFRESH_LAYOUT=  "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-beta01"
+
+        calligraphyVersion = '3.1.1'
+        viewpumpVersion = '2.0.3'
+        CALLIGRAPHY = [
+                calligraphy: "io.github.inflationx:calligraphy3:${calligraphyVersion}",
+                viewpump   : "io.github.inflationx:viewpump:${viewpumpVersion}"
+        ]
+
+        // Architecture Components
+        lifecycleKtxVersion = '2.2.0-rc03'
+        lifecycleVersion = '2.1.0'
+        stateVersion = '1.0.0-rc03'
+        LIFE_CYCLE = [
+                extensions     : "androidx.lifecycle:lifecycle-extensions:${lifecycleVersion}",
+                save_state     : "androidx.lifecycle:lifecycle-viewmodel-savedstate:${stateVersion}",
+                kapt           : "androidx.lifecycle:lifecycle-compiler:${lifecycleVersion}",
+                test           : "androidx.arch.core:core-testing:${lifecycleVersion}",
+                ktxRuntime     : "androidx.lifecycle:lifecycle-runtime-ktx:${lifecycleKtxVersion}",
+                ktxLiveData    : "androidx.lifecycle:lifecycle-livedata-ktx:${lifecycleKtxVersion}",
+                reactiveStreams: "androidx.lifecycle:lifecycle-reactivestreams-ktx:${lifecycleKtxVersion}",
+                viewModel      : "androidx.lifecycle:lifecycle-viewmodel-ktx:${lifecycleKtxVersion}"
+        ]
+
+        //Database
+        roomVersion = "2.2.3"
+        ROOM = [
+                runtime: "androidx.room:room-runtime:$roomVersion",
+                kapt   : "androidx.room:room-compiler:$roomVersion",
+                ktx    : "androidx.room:room-ktx:$roomVersion"
+        ]
+
+        // Kotlin stdlib
+        KOTLIN_STDLIB = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+
+        // Retrofit
+        retrofitVersion = '2.9.0'
+        RETROFIT = [
+                retrofit       : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+                converter_moshi: "com.squareup.retrofit2:converter-moshi:${retrofitVersion}"
+        ]
+
+        moshiVersion = '1.9.2'
+        MOSHI = [
+                moshi: "com.squareup.moshi:moshi-kotlin:${moshiVersion}",
+                kapt : "com.squareup.moshi:moshi-kotlin-codegen:${moshiVersion}"
+        ]
+
+        // Dagger
+        daggerVersion = '2.25.3'
+        DEPENDENCY_INJECTION = [
+                dagger        : "com.google.dagger:dagger:${daggerVersion}",
+                support       : "com.google.dagger:dagger-android-support:${daggerVersion}",
+                kapt_compiler : "com.google.dagger:dagger-compiler:${daggerVersion}",
+                kapt_processor: "com.google.dagger:dagger-android-processor:${daggerVersion}"
+        ]
+
+        // Stetho
+        stethoVersion = "1.5.1"
+        STETHO = [
+                stetho: "com.facebook.stetho:stetho:${stethoVersion}",
+                okhttp: "com.facebook.stetho:stetho-okhttp3:${stethoVersion}"
+        ]
+
+        // Utils
+        ktxVersion = '1.1.0'
+        KTX = [
+                core     : "androidx.core:core-ktx:${ktxVersion}",
+                colletion: "androidx.collection:collection-ktx:${ktxVersion}",
+                fragment : "androidx.fragment:fragment-ktx:${ktxVersion}",
+                activity : "androidx.activity:activity-ktx:1.1.0-rc03"
+        ]
+
+        // Timber
+        TIMBER = 'com.jakewharton.timber:timber:4.7.1'
+
+        // Leak Canary
+        leakCanaryVersion = '2.0-alpha-3'
+        LEAK_CANNARY = "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}"
+
+        // Instrumentation tests
+        espressoVersion = '3.1.1'
+        runnerVersion = '1.1.1'
+        rulesVersion = '1.1.0'
+        truthVersion = '0.40'
+
+        INSTRUMENT_TESTS = [
+                expresspCore   : "androidx.test.espresso:espresso-core:${espressoVersion}",
+                expresspContrib: "androidx.test.espresso:espresso-contrib:${espressoVersion}",
+                runner         : "androidx.test:runner:${runnerVersion}",
+                rule           : "androidx.test:rules:${rulesVersion}",
+                truth          : "com.google.truth:truth:${truthVersion}"
+
+        ]
+
+        // Local unit tests
+        junitVersion = '4.12'
+        mockitoVersion = "2.8.9"
+        hamcrestVersion = '2.1'
+        UNIT_TEST = [
+                junit   : "junit:junit:${junitVersion}",
+                mockito : "org.mockito:mockito-core:${mockitoVersion}",
+                hamcrest: "org.hamcrest:hamcrest-library:${hamcrestVersion}",
+        ]
+
+        /*add all dependencies to this array*/
+        PROJECT_KAPT = [
+                DEPENDENCY_INJECTION.kapt_compiler,
+                DEPENDENCY_INJECTION.kapt_processor,
+                ROOM.kapt,
+                MOSHI.kapt
+        ]
+
+
+        PROJECT_DEPENDENCIES = [
+                APPCOMPAT,
+                MATERIAL,
+                CALLIGRAPHY.calligraphy,
+                CALLIGRAPHY.viewpump,
+                SWIPE_REFRESH_LAYOUT,
+                LIFE_CYCLE.extensions,
+                LIFE_CYCLE.save_state,
+                LIFE_CYCLE.ktxRuntime,
+                LIFE_CYCLE.ktxLiveData,
+                LIFE_CYCLE.reactiveStreams,
+                LIFE_CYCLE.viewModel,
+                DEPENDENCY_INJECTION.dagger,
+                DEPENDENCY_INJECTION.support,
+                ROOM.runtime,
+                ROOM.ktx,
+                RETROFIT.retrofit,
+                RETROFIT.converter_moshi,
+                MOSHI.moshi,
+                STETHO.stetho,
+                STETHO.okhttp,
+                KTX.core,
+                KTX.colletion,
+                KTX.fragment,
+                KTX.activity,
+                TIMBER
+        ]
+
+        PROJECT_COMPILE_ONLY = [
+        ]
+
+        PROJECT_ANDROID_TEST_DEPENDENCIES = [
+                INSTRUMENT_TESTS.expresspCore,
+                INSTRUMENT_TESTS.expresspContrib,
+                INSTRUMENT_TESTS.runner,
+                INSTRUMENT_TESTS.rule,
+                INSTRUMENT_TESTS.truth
+        ]
+
+        PROJECT_TEST_DEPENDENCIES = [
+                UNIT_TEST.junit,
+                UNIT_TEST.mockito,
+                UNIT_TEST.hamcrest,
+                LIFE_CYCLE.test
+        ]
+
+    }
     repositories {
         google()
         jcenter()
     }
-    dependencies {
-        classpath "com.android.tools.build:gradle:4.0.1"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+    dependencies {
+        classpath "com.android.tools.build:gradle:${androidGradlePluginVersion}"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
     }
 }
 
@@ -18,6 +186,102 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+final String APP_PLUGIN = 'com.android.application'
+final String KOTLIN_ANDROID_PLUGIN = 'kotlin-android'
+final String KOTLIN_EXTENSIONS_PLUGIN = 'kotlin-android-extensions'
+final String KOTLIN_KAPT_PLUGIN = 'kotlin-kapt'
+
+subprojects {
+    apply plugin: APP_PLUGIN
+    apply plugin: KOTLIN_ANDROID_PLUGIN
+    apply plugin: KOTLIN_EXTENSIONS_PLUGIN
+    apply plugin: KOTLIN_KAPT_PLUGIN
+
+    dependencies {
+        api PROJECT_DEPENDENCIES
+        androidTestImplementation PROJECT_ANDROID_TEST_DEPENDENCIES
+        testImplementation PROJECT_TEST_DEPENDENCIES
+        kapt PROJECT_KAPT
+        debugApi LEAK_CANNARY
+        compileOnly PROJECT_COMPILE_ONLY
+    }
+
+    def keystorePropertiesFile = rootProject.file("keystore.properties")
+    def keystoreProperties = new Properties()
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+    android {
+
+        androidExtensions {
+            experimental = true
+        }
+
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+
+        kotlinOptions {
+            jvmTarget = JavaVersion.VERSION_1_8
+        }
+
+        buildFeatures{
+            dataBinding = true
+        }
+
+        signingConfigs {
+            release {
+                try {
+                    keyAlias keystoreProperties['keyAlias']
+                    keyPassword keystoreProperties['keyPassword']
+                    storeFile file(keystoreProperties['storeFile'])
+                    storePassword keystoreProperties['storePassword']
+                }
+                catch (ex) {
+                    throw new IOException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties. " + ex.toString())
+                }
+            }
+        }
+
+        defaultConfig {
+            minSdkVersion minSdk
+            compileSdkVersion compileSdk
+            targetSdkVersion compileSdk
+            multiDexEnabled true
+            versionCode 1
+            versionName "1.0"
+            applicationId "com.example.todo"
+            vectorDrawables.useSupportLibrary = true
+            testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+            javaCompileOptions {
+                annotationProcessorOptions {
+                    arguments = [
+                            "room.schemaLocation"  : "$projectDir/schemas".toString(),
+                            "room.incremental"     : "true",
+                            "room.expandProjection": "true"]
+                }
+            }
+
+            buildTypes {
+                debug {
+                    applicationIdSuffix '.debug'
+                    versionNameSuffix '-DEBUG'
+                    minifyEnabled false
+                    proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+                }
+
+                release {
+                    minifyEnabled true
+                    proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+                    signingConfig signingConfigs.release
+                }
+            }
+        }
     }
 }
 
