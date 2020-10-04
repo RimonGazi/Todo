@@ -1,12 +1,9 @@
 package com.example.todo.ui
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import com.example.todo.R
+import com.example.todo.base.ui.BaseActivity
+import com.example.todo.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
+class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
+
 }
