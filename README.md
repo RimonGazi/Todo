@@ -1,4 +1,4 @@
-# Restaurant Finder
+# Todos
 
 ## Functional spec :
 Write a simple application presenting list of todos.
