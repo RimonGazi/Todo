@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="ic_launcher_background">#3DDC84</color>
+
+    <color name="deep_sky_blue">#1a73e8</color>
+    <color name="teal">#069f86</color>
+    <color name="bright_light_blue">#27e5fd</color>
+    <color name="sun_yellow">#fcd230</color>
+    <color name="bright_orange">#ff6c00</color>
+
+    <integer-array name="swipe_refresh">
+        <item>@color/deep_sky_blue</item>
+        <item>@color/teal</item>
+        <item>@color/bright_light_blue</item>
+        <item>@color/sun_yellow</item>
+        <item>@color/bright_orange</item>
+    </integer-array>
+</resources>

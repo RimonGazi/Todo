@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Todo</string>
+    <string name="boolean_to_string">%1$s</string>
+</resources>
