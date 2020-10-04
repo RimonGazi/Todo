@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data/>
+    <data />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh"
@@ -15,9 +15,10 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/todo_recycler_view"
             android:layout_width="match_parent"
-            tools:itemCount="10"
+            android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:layout_height="match_parent">
+            tools:itemCount="10"
+            tools:listitem="@layout/list_item_todo">
 
         </androidx.recyclerview.widget.RecyclerView>
 
