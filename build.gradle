@@ -10,7 +10,7 @@ buildscript {
         APPCOMPAT = "androidx.appcompat:appcompat:$appcompatVersion"
         materialVersion = '1.2.0-alpha04'
         MATERIAL = "com.google.android.material:material:$materialVersion"
-        SWIPE_REFRESH_LAYOUT=  "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-beta01"
+        SWIPE_REFRESH_LAYOUT = "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-beta01"
 
         calligraphyVersion = '3.1.1'
         viewpumpVersion = '2.0.3'
@@ -101,7 +101,9 @@ buildscript {
                 expresspContrib: "androidx.test.espresso:espresso-contrib:${espressoVersion}",
                 runner         : "androidx.test:runner:${runnerVersion}",
                 rule           : "androidx.test:rules:${rulesVersion}",
-                truth          : "com.google.truth:truth:${truthVersion}"
+                truth          : "com.google.truth:truth:${truthVersion}",
+                core           : "androidx.test:core:1.2.0",
+                coretesting    : "androidx.arch.core:core-testing:2.1.0"
 
         ]
 
@@ -160,7 +162,10 @@ buildscript {
                 INSTRUMENT_TESTS.expresspContrib,
                 INSTRUMENT_TESTS.runner,
                 INSTRUMENT_TESTS.rule,
-                INSTRUMENT_TESTS.truth
+                INSTRUMENT_TESTS.truth,
+                INSTRUMENT_TESTS.core,
+                INSTRUMENT_TESTS.coretesting,
+
         ]
 
         PROJECT_TEST_DEPENDENCIES = [
@@ -229,7 +234,7 @@ subprojects {
             jvmTarget = JavaVersion.VERSION_1_8
         }
 
-        buildFeatures{
+        buildFeatures {
             dataBinding = true
         }
 
